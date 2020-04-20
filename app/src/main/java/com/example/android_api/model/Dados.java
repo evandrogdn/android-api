@@ -28,4 +28,9 @@ public class Dados {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    @Override
+    public String toString() {
+        return "{\"nome_completo\": " + nome_completo + ", \"endereco\": " + endereco + ", \"telefone\": " + telefone + "}";
+    }
 }

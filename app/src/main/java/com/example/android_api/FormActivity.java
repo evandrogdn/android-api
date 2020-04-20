@@ -9,9 +9,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android_api.helper.FormHelper;
+import com.example.android_api.model.Censo;
 import com.example.android_api.model.Censos;
+import com.example.android_api.model.CensosResponse;
 import com.example.android_api.model.Dados;
+import com.example.android_api.service.CensoService;
 import com.google.gson.Gson;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class FormActivity extends AppCompatActivity {
     private Button button;
@@ -36,11 +46,65 @@ public class FormActivity extends AppCompatActivity {
         addListeners();
     }
 
+    private void sendPost(Censo censo) {
+        CensoService service = CensoService.retrofit.create(CensoService.class);
+        final Call<CensosResponse> call = service.repoColetorInsert(censo);
+
+        call.enqueue(new Callback<CensosResponse>() {
+            @Override
+            public void onResponse(Call<CensosResponse> call, Response<CensosResponse> response) {
+                List<Censos> censos = (List<Censos>) response.body().getEmbedded().getCensos();
+
+                if (censos != null) {
+                    Toast.makeText(
+                        FormActivity.this,
+                        "Inserido com sucesso!",
+                        Toast.LENGTH_LONG
+                    ).show();
+                } else {
+                    Toast.makeText(
+                            FormActivity.this,
+                            "Falha ao inserir!",
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CensosResponse> call, Throwable throwable) {
+                Toast.makeText(
+                        FormActivity.this,
+                        "Erro: " + throwable.getMessage(),
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        });
+    }
+
+    private void censoAdicionar() {
+        Dados dadosForm = (new FormHelper(FormActivity.this)).getDadosFromForm();
+
+        Censo censo = new Censo();
+        censo.setColetor(1006608);
+        censo.setDados(dadosForm.toString());
+
+        sendPost(censo);
+    }
+
+    private void censoEditar() {
+
+    }
+
     private void addListeners() {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FormActivity.this, "Not yet", Toast.LENGTH_LONG).show();
+                if (censoToUpdate == null) {
+                    censoAdicionar();
+                } else {
+                    censoEditar();
+                }
+                finish();
             }
         });
     }
