@@ -1,8 +1,7 @@
-package com.example.android_api;
+package com.example.android_api.service;
 
+import com.example.android_api.model.Coletor;
 import com.example.android_api.model.CensosResponse;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.util.List;
 

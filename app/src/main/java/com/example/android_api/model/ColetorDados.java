@@ -1,4 +1,4 @@
-package com.example.android_api;
+package com.example.android_api.model;
 
 import androidx.annotation.NonNull;
 
