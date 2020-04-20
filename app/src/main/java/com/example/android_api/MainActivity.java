@@ -31,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
         onListCensos();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        onListCensos();
+    }
+
     private void onListCensos() {
         CensoService censoService = CensoService.retrofit.create(CensoService.class);
         final Call<CensosResponse> call = censoService.repoColetor("1001");
