@@ -30,7 +30,7 @@ public class Censos implements Serializable {
         return links;
     }
 
-    public static class Links {
+    public static class Links implements Serializable {
         @SerializedName("self")
         private final Links.Self self;
         @SerializedName("censo")
@@ -49,7 +49,7 @@ public class Censos implements Serializable {
             return censo;
         }
 
-        public static class Self {
+        public static class Self implements Serializable{
             @SerializedName("href")
             private final String href;
 
@@ -62,7 +62,7 @@ public class Censos implements Serializable {
             }
         }
 
-        public static class Censo {
+        public static class Censo implements Serializable{
             @SerializedName("href")
             private final String href;
 
