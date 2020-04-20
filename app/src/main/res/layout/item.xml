@@ -13,7 +13,7 @@
       android:background="@color/borda_imagem"
       android:padding="5dp" />
 
-  <TextView android:id="@+id/nome"
+  <TextView android:id="@+id/nome_completo"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>
 

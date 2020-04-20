@@ -14,7 +14,7 @@ public class FormHelper {
     private Dados dados;
 
     public FormHelper(FormActivity form) {
-        this.nome = form.findViewById(R.id.nome);
+        this.nome = form.findViewById(R.id.nome_completo);
         this.telefone = form.findViewById(R.id.telefone);
         this.endereco = form.findViewById(R.id.endereco);
 

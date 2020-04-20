@@ -35,7 +35,7 @@ public class CensoAdapter extends ArrayAdapter<Censos> {
         Dados dados = (new Gson()).fromJson(censo.getDados(), Dados.class);
 
         ImageView imagem = (ImageView) convertView.findViewById(R.id.foto);
-        TextView nome = (TextView) convertView.findViewById(R.id.nome);
+        TextView nome = (TextView) convertView.findViewById(R.id.nome_completo);
         imagem.setImageResource(R.drawable.ic_no_image);
         nome.setText("   " + dados.getNome());
 

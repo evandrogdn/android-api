@@ -7,37 +7,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <ImageView
-            android:id="@+id/foto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_launcher" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nome:" />
 
         <EditText
-            android:id="@+id/nome"
+            android:id="@+id/nome_completo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10" >
 
             <requestFocus />
         </EditText>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Site:" />
-
-        <EditText
-            android:id="@+id/site"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -61,17 +43,6 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="phone" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nota:" />
-
-        <SeekBar
-            android:id="@+id/nota"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:max="10" />
 
         <Button
             android:id="@+id/botao"

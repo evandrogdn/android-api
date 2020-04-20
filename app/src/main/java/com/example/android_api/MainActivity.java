@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listaCensos = findViewById(R.id.lista_alunos);
+        listaCensos = findViewById(R.id.lista_censos);
         onListCensos();
         onLoadAddListeners();
     }
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_novo:
+            case R.id.menu_option_novo:
                 Intent intent = new Intent(
                         MainActivity.this,
                         FormActivity.class
