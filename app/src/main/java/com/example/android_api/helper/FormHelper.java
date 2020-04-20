@@ -21,7 +21,7 @@ public class FormHelper {
         this.dados = new Dados();
     }
 
-    private Dados getDadosFromForm() {
+    public Dados getDadosFromForm() {
         this.dados.setNome(this.nome.getEditableText().toString());
         this.dados.setTelefone(this.telefone.getEditableText().toString());
         this.dados.setEndereco(this.endereco.getEditableText().toString());
@@ -29,7 +29,7 @@ public class FormHelper {
         return this.dados;
     }
 
-    private void setDadosIntoForm(Dados dados) {
+    public void setDadosIntoForm(Dados dados) {
         this.dados = dados;
 
         this.nome.setText(this.dados.getNome());
