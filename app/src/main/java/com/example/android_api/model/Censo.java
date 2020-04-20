@@ -22,6 +22,6 @@ public class Censo {
 
     @Override
     public String toString() {
-        return "{\"coletor\":" + coletor + ", \"dados\": " + dados + "}";
+        return "{\"coletor\":" + coletor + ", \"dados\":" + dados + "}";
     }
 }

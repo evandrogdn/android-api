@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onListCensos() {
         CensoService censoService = CensoService.retrofit.create(CensoService.class);
-        final Call<CensosResponse> call = censoService.repoColetor("1001");
+        final Call<CensosResponse> call = censoService.repoColetor("1006608");
         // send busca
         call.enqueue(new Callback<CensosResponse>() {
             @Override

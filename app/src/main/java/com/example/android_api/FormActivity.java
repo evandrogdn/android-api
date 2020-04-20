@@ -53,21 +53,11 @@ public class FormActivity extends AppCompatActivity {
         call.enqueue(new Callback<CensosResponse>() {
             @Override
             public void onResponse(Call<CensosResponse> call, Response<CensosResponse> response) {
-                List<Censos> censos = (List<Censos>) response.body().getEmbedded().getCensos();
-
-                if (censos != null) {
-                    Toast.makeText(
-                        FormActivity.this,
-                        "Inserido com sucesso!",
-                        Toast.LENGTH_LONG
-                    ).show();
-                } else {
-                    Toast.makeText(
-                            FormActivity.this,
-                            "Falha ao inserir!",
-                            Toast.LENGTH_LONG
-                    ).show();
-                }
+                Toast.makeText(
+                    FormActivity.this,
+                    "Inserido com sucesso!",
+                    Toast.LENGTH_LONG
+                ).show();
             }
 
             @Override
