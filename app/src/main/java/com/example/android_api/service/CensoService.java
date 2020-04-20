@@ -10,13 +10,21 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface CensoService {
     @POST("api/censo")
     Call<CensosResponse> repoColetorInsert(
             @Body Censo censo
+    );
+
+    @PATCH("api/censo/{id}")
+    Call<CensosResponse> repoColetorPatch(
+            @Body Censo censo,
+            @Path("id") Integer id
     );
 
     @GET("censo/search/findByColetor")
