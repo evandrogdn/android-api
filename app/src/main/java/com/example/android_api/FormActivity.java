@@ -16,6 +16,7 @@ import com.example.android_api.model.Dados;
 import com.example.android_api.service.CensoService;
 import com.google.gson.Gson;
 
+import java.lang.reflect.Array;
 import java.util.List;
 
 import retrofit2.Call;
@@ -81,8 +82,42 @@ public class FormActivity extends AppCompatActivity {
         sendPost(censo);
     }
 
-    private void censoEditar() {
+    private void sendPatch(Censo censo, Integer id) {
+        CensoService service = CensoService.retrofit.create(CensoService.class);
+        final Call<CensosResponse> call = service.repoColetorPatch(censo, id);
 
+        call.enqueue(new Callback<CensosResponse>() {
+            @Override
+            public void onResponse(Call<CensosResponse> call, Response<CensosResponse> response) {
+                Toast.makeText(
+                        FormActivity.this,
+                        "Alterado com sucesso!",
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+
+            @Override
+            public void onFailure(Call<CensosResponse> call, Throwable throwable) {
+                Toast.makeText(
+                        FormActivity.this,
+                        "Erro: " + throwable.getMessage(),
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        });
+    }
+
+    private void censoEditar() {
+        String[] link = censoToUpdate.getLinks().getCenso().getHref().split("/");
+        Integer id = Integer.parseInt(link[link.length - 1]);
+
+        Dados dadosForm = (new FormHelper(FormActivity.this)).getDadosFromForm();
+
+        Censo censo = new Censo();
+        censo.setColetor(1006608);
+        censo.setDados(dadosForm.toString());
+
+        sendPatch(censo, id);
     }
 
     private void addListeners() {

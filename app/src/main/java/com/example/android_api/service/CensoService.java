@@ -21,7 +21,7 @@ public interface CensoService {
             @Body Censo censo
     );
 
-    @PATCH("api/censo/{id}")
+    @PATCH("censo/{id}")
     Call<CensosResponse> repoColetorPatch(
             @Body Censo censo,
             @Path("id") Integer id

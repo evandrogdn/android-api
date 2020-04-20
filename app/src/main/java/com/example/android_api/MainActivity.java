@@ -87,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
                         popUpMenuAction(item);
+                        onListCensos();
                         return true;
                     }
                 });
