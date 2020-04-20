@@ -2,7 +2,9 @@ package com.example.android_api.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Censos {
+import java.io.Serializable;
+
+public class Censos implements Serializable {
     @SerializedName("coletor")
     private final int coletor;
     @SerializedName("dados")

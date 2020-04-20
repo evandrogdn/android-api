@@ -42,6 +42,38 @@ public class MainActivity extends AppCompatActivity {
         this.censoSelecionado = (Censos) listaCensos.getAdapter().getItem(position);
     }
 
+    private void censoEditar() {
+        Intent intent = new Intent(MainActivity.this, FormActivity.class);
+        intent.putExtra("censo_selecionado", this.censoSelecionado);
+        startActivity(intent);
+        onListCensos();
+    }
+
+    private void censoRemover() {
+        Toast.makeText(
+                MainActivity.this,
+                "Rota não implementada na nossa API",
+                Toast.LENGTH_LONG
+        ).show();
+    }
+
+    public void popUpMenuAction(MenuItem item) {
+        switch (item.getTitle().toString()) {
+            case "Editar":
+                censoEditar();
+                break;
+            case "Remover":
+                censoRemover();
+                break;
+            default:
+                Toast.makeText(
+                    MainActivity.this,
+                    "NOT IMPLEMENTED YET",
+                    Toast.LENGTH_LONG
+                ).show();
+        }
+    }
+
     private void onLoadAddListeners() {
         listaCensos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -51,7 +83,13 @@ public class MainActivity extends AppCompatActivity {
                 PopupMenu menu = new PopupMenu(MainActivity.this, view);
                 menu.getMenu().add("Editar");
                 menu.getMenu().add("Remover");
-
+                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        popUpMenuAction(item);
+                        return true;
+                    }
+                });
                 menu.show();
             }
         });
