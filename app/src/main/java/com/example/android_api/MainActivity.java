@@ -1,9 +1,13 @@
 package com.example.android_api;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.android_api.adapter.CensoAdapter;
@@ -33,6 +37,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         onListCensos();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_novo:
+                Intent intent = new Intent(
+                        MainActivity.this,
+                        FormActivity.class
+                );
+                startActivity(intent);
+                break;
+            default:
+                Toast.makeText(
+                        MainActivity.this,
+                        "NOT IMPLEMENTED YET",
+                        Toast.LENGTH_LONG
+                ).show();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void onListCensos() {
